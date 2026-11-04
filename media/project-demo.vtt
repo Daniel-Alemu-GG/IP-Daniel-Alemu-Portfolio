@@ -1,13 +1,16 @@
 WEBVTT
 
 00:00:00.000 --> 00:00:03.000
-This is my Simple Calculator, written in Python.
+This is my SOLITAIRE GAME written in JavaScript.
 
 00:00:03.000 --> 00:00:06.000
-I enter the first number, 12, and the operator +.
+We can distribute the cards by clicking the stock pile.
 
 00:00:06.000 --> 00:00:09.000
-Then I enter the second number, 30.
+It was built without using frameworks.
 
 00:00:09.000 --> 00:00:12.000
-The program prints the result: 42.
+We can put Ace's (A) on the base piles.
+
+00:00:12.000 --> 00:00:14.000
+This is the final caption.
