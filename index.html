@@ -14,8 +14,11 @@ developer, HTML">
 
 </head>
 
+
+
 <body>
     <header>
+        <canvas id="logo" width="120" height="120">Daniel Alemu Logo</canvas>
         <h1>Daniel Alemu</h1>
         <img src="images/profile.jpg" alt="Portrait of Daniel Alemu" title="Daniel Alemu" width="150" height="200">
         <p>Software Engineering student at Addis Ababa Science and Technology Univeristy.</p>
@@ -127,8 +130,10 @@ developer, HTML">
 
             <p>
                 <label for="lvl-js">C++</label>
-                <meter id="lvl-js" value="0.5" min="0" max="1" low="0.3" high="0.7" optimum="1">20%</meter>
+                <meter id="lvl-cpp" value="0.5" min="0" max="1" low="0.3" high="0.7" optimum="1">20%</meter>
             </p>
+
+            <canvas id="skills-bar-chart" width="300" height="150"></canvas>
 
             <h3>My Learning Roadmap</h3>
             <ol type="1">
@@ -340,5 +345,58 @@ developer, HTML">
     </footer>
 
 </body>
+
+<script>
+    const canvas = document.getElementById('logo');
+    const ctx = canvas.getContext('2d');
+    // 1. Blue square background: x, y, width, height
+
+    ctx.fillStyle = "#1f5fa8";
+    ctx.fillRect(0, 0, 120, 120);
+    // 2. White circle: centre x, centre y, radius, start angle, end angle
+    ctx.beginPath();
+    ctx.arc(60, 60, 45, 0, 2 * Math.PI);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    // 3. Initials in the middle
+    ctx.fillStyle = "#1f5fa8";
+    ctx.font = "bold 36px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("DA", 60, 62);
+
+
+    const chart = document.getElementById('skills-bar-chart');
+    const c = chart.getContext('2d');
+
+    const data = [
+        { label: "HTML", value: 0.8 },
+        { label: "Python", value: 0.7 },
+        { label: "JS", value: 0.9 },
+        { label: "C++", value: 0.5 }
+    ];
+
+    const maxH = 120;      // height of a 100% bar
+    const baseY = 130;     // bottom edge of the bars
+    const slot = chart.width / data.length;
+    const barW = 40;
+
+    c.fillStyle = "#1f5fa8";
+    c.font = "12px Arial";
+    c.textAlign = "center";
+    c.textBaseline = "top";
+
+    data.forEach((d, i) => {
+        const h = d.value * maxH;                 // 0.8 * 120 = 96
+        const x = i * slot + (slot - barW) / 2;
+        const y = baseY - h;                      // bar stands on y = 130
+
+        c.fillStyle = "#1f5fa8";
+        c.fillRect(x, y, barW, h);
+
+        c.fillStyle = "#333";
+        c.fillText(d.label, x + barW / 2, baseY + 5);
+    });
+</script>
 
 </html>
